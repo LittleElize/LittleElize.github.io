@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://LittleElize.github.io</id>
     <title>Elize</title>
-    <updated>2020-10-06T07:24:07.494Z</updated>
+    <updated>2020-10-06T07:39:12.891Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://LittleElize.github.io"/>
     <link rel="self" href="https://LittleElize.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://LittleElize.github.io/images/avatar.png</logo>
     <icon>https://LittleElize.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Elize</rights>
+    <entry>
+        <title type="html"><![CDATA[从1开始学springboot]]></title>
+        <id>https://LittleElize.github.io/post/cong-1-kai-shi-xue-springboot/</id>
+        <link href="https://LittleElize.github.io/post/cong-1-kai-shi-xue-springboot/">
+        </link>
+        <updated>2020-10-06T07:28:15.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[从0开始学springboot]]></title>
         <id>https://LittleElize.github.io/post/cong-0-kai-shi-xue-springboot/</id>
