@@ -2,14 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://LittleElize.github.io</id>
     <title>Elize</title>
-    <updated>2020-10-06T03:06:25.469Z</updated>
+    <updated>2020-10-06T07:21:19.246Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://LittleElize.github.io"/>
     <link rel="self" href="https://LittleElize.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>学习 学个屁</subtitle>
     <logo>https://LittleElize.github.io/images/avatar.png</logo>
     <icon>https://LittleElize.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Elize</rights>
+    <entry>
+        <title type="html"><![CDATA[从0开始学springboot]]></title>
+        <id>https://LittleElize.github.io/post/cong-0-kai-shi-xue-springboot/</id>
+        <link href="https://LittleElize.github.io/post/cong-0-kai-shi-xue-springboot/">
+        </link>
+        <updated>2020-10-06T03:37:57.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[java常用环境配置]]></title>
         <id>https://LittleElize.github.io/post/huan-jing-pei-zhi/</id>
