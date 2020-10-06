@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://LittleElize.github.io/favicon.ico?v=1601970624840">
+<link rel="shortcut icon" href="https://LittleElize.github.io/favicon.ico?v=1601977341253">
 <link rel="stylesheet" href="https://LittleElize.github.io/styles/main.css">
 
 
@@ -24,9 +24,16 @@
 
 
 
-    <meta name="description" content="保姆级教学 带你从1开始学springboot
+    <meta name="description" content="
+保姆级教学 带你从1开始学springboot
 增删改查
-" />
+
+
+相信你已经搞定了
+
+新建一个sql文件 起名为u_user.sql 放在resources里
+use pms;#新建的数据库名
+SET FOREIGN_KEY_CHECKS=0..." />
     <meta name="keywords" content="java" />
   </head>
   <body>
@@ -36,7 +43,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://LittleElize.github.io">
-        <img src="https://LittleElize.github.io/images/avatar.png?v=1601970624840" class="site-logo">
+        <img src="https://LittleElize.github.io/images/avatar.png?v=1601977341253" class="site-logo">
         <h1 class="site-title">Elize</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -99,9 +106,43 @@
               </div>
             
             <div class="post-content" v-pre>
-              <p>保姆级教学 带你从1开始学springboot<br>
-增删改查</p>
+              <ul>
+<li>保姆级教学 带你从1开始学springboot<br>
+增删改查</li>
+</ul>
 <!-- more -->
+<p>相信你已经搞定了<br>
+<img src="https://LittleElize.github.io/post-images/1601971157767.jpg" alt="" loading="lazy"></p>
+<p>新建一个sql文件 起名为u_user.sql 放在resources里</p>
+<pre><code>use pms;#新建的数据库名
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS `u_user`;
+CREATE TABLE `u_user` (
+  `u_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id标识符 自增长',
+  `u_name` varchar(255) NOT NULL COMMENT '用户姓名',
+  `u_sex` tinyint NOT NULL COMMENT '用户性别 1、男性 2、女性 ',
+  `u_birthday` date NOT NULL COMMENT '用户年龄 出生年月日',
+  `u_state` tinyint NOT NULL DEFAULT '1' COMMENT '用户状态 1、正常 2、删除',
+  `u_ascription` tinyint DEFAULT NULL COMMENT '归属',
+  PRIMARY KEY (`u_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO `u_user` VALUES ('1', '咯咯', '1', '2020-09-14', '1', '0');
+INSERT INTO `u_user` VALUES ('2', '呃呃', '1', '2020-09-09', '1', '0');
+INSERT INTO `u_user` VALUES ('3', '哦哦', '1', '2020-09-01', '1', '0');
+INSERT INTO `u_user` VALUES ('4', '哟哟', '1', '2020-09-01', '1', '1');
+INSERT INTO `u_user` VALUES ('5', '嗷嗷', '1', '2020-09-04', '1', '4');
+INSERT INTO `u_user` VALUES ('6', '丫丫', '2', '2020-09-22', '1', '2');
+INSERT INTO `u_user` VALUES ('7', '哒哒', '1', '2020-09-22', '1', '3');
+INSERT INTO `u_user` VALUES ('8', '阿巴阿巴', '1', '2020-09-05', '1', '7');
+</code></pre>
+<p>ctrl+c ctrl+v  你懂的 ctrl+shift+F10运行 选择数据库 冲<br>
+<img src="https://LittleElize.github.io/post-images/1601975729951.jpg" alt="" loading="lazy"><br>
+接下来在java中创建以下文件<br>
+<img src="https://LittleElize.github.io/post-images/1601971606515.jpg" alt="" loading="lazy"><br>
+很多是吧 我故意的<br>
+<img src="https://LittleElize.github.io/post-images/1601971658233.jpg" alt="" loading="lazy"><br>
+完成后就开始写实体类</p>
+
             </div>
             
               <div class="tag-container">
