@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://LittleElize.github.io</id>
     <title>Elize</title>
-    <updated>2020-10-06T02:29:06.590Z</updated>
+    <updated>2020-10-06T02:38:48.870Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://LittleElize.github.io"/>
     <link rel="self" href="https://LittleElize.github.io/atom.xml"/>
@@ -16,11 +16,11 @@
         <link href="https://LittleElize.github.io/post/huan-jing-pei-zhi/">
         </link>
         <updated>2020-10-04T02:39:57.000Z</updated>
-        <summary type="html"><![CDATA[<p>java常用环境配置合集<br>
-jdk8、maven、mysql、navicat、postman</p>
+        <summary type="html"><![CDATA[<h1 id="java常用环境配置合集">java常用环境配置合集</h1>
+<p>jdk8、maven、mysql、navicat、postman</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>java常用环境配置合集<br>
-jdk8、maven、mysql、navicat、postman</p>
+        <content type="html"><![CDATA[<h1 id="java常用环境配置合集">java常用环境配置合集</h1>
+<p>jdk8、maven、mysql、navicat、postman</p>
 ]]></content>
     </entry>
 </feed>
