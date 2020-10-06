@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://LittleElize.github.io</id>
     <title>Elize</title>
-    <updated>2020-10-06T01:13:41.237Z</updated>
+    <updated>2020-10-06T02:29:06.590Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://LittleElize.github.io"/>
     <link rel="self" href="https://LittleElize.github.io/atom.xml"/>
@@ -11,23 +11,16 @@
     <icon>https://LittleElize.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Elize</rights>
     <entry>
-        <title type="html"><![CDATA[环境配置]]></title>
+        <title type="html"><![CDATA[java常用环境配置]]></title>
         <id>https://LittleElize.github.io/post/huan-jing-pei-zhi/</id>
         <link href="https://LittleElize.github.io/post/huan-jing-pei-zhi/">
         </link>
         <updated>2020-10-04T02:39:57.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://LittleElize.github.io/post/hello-gridea/</id>
-        <link href="https://LittleElize.github.io/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <summary type="html"><![CDATA[<p>java常用环境配置合集<br>
+jdk8、maven、mysql、navicat、postman</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <content type="html"><![CDATA[<p>java常用环境配置合集<br>
+jdk8、maven、mysql、navicat、postman</p>
 ]]></content>
     </entry>
 </feed>
