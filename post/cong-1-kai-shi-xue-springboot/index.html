@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://LittleElize.github.io/favicon.ico?v=1601977341253">
+<link rel="shortcut icon" href="https://LittleElize.github.io/favicon.ico?v=1602056597746">
 <link rel="stylesheet" href="https://LittleElize.github.io/styles/main.css">
 
 
@@ -43,7 +43,7 @@ SET FOREIGN_KEY_CHECKS=0..." />
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://LittleElize.github.io">
-        <img src="https://LittleElize.github.io/images/avatar.png?v=1601977341253" class="site-logo">
+        <img src="https://LittleElize.github.io/images/avatar.png?v=1602056597746" class="site-logo">
         <h1 class="site-title">Elize</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -112,7 +112,7 @@ SET FOREIGN_KEY_CHECKS=0..." />
 </ul>
 <!-- more -->
 <p>相信你已经搞定了<br>
-<img src="https://LittleElize.github.io/post-images/1601971157767.jpg" alt="" loading="lazy"></p>
+<img src="https://LittleElize.github.io/post-images/3/1.jpg" alt="" loading="lazy"></p>
 <p>新建一个sql文件 起名为u_user.sql 放在resources里</p>
 <pre><code>use pms;#新建的数据库名
 SET FOREIGN_KEY_CHECKS=0;
@@ -125,7 +125,7 @@ CREATE TABLE `u_user` (
   `u_state` tinyint NOT NULL DEFAULT '1' COMMENT '用户状态 1、正常 2、删除',
   `u_ascription` tinyint DEFAULT NULL COMMENT '归属',
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 INSERT INTO `u_user` VALUES ('1', '咯咯', '1', '2020-09-14', '1', '0');
 INSERT INTO `u_user` VALUES ('2', '呃呃', '1', '2020-09-09', '1', '0');
 INSERT INTO `u_user` VALUES ('3', '哦哦', '1', '2020-09-01', '1', '0');
@@ -136,12 +136,202 @@ INSERT INTO `u_user` VALUES ('7', '哒哒', '1', '2020-09-22', '1', '3');
 INSERT INTO `u_user` VALUES ('8', '阿巴阿巴', '1', '2020-09-05', '1', '7');
 </code></pre>
 <p>ctrl+c ctrl+v  你懂的 ctrl+shift+F10运行 选择数据库 冲<br>
-<img src="https://LittleElize.github.io/post-images/1601975729951.jpg" alt="" loading="lazy"><br>
+<img src="https://LittleElize.github.io/post-images/3/2.jpg" alt="" loading="lazy"><br>
 接下来在java中创建以下文件<br>
-<img src="https://LittleElize.github.io/post-images/1601971606515.jpg" alt="" loading="lazy"><br>
+<img src="https://LittleElize.github.io/post-images/3/3.jpg" alt="" loading="lazy"><br>
 很多是吧 我故意的<br>
-<img src="https://LittleElize.github.io/post-images/1601971658233.jpg" alt="" loading="lazy"><br>
-完成后就开始写实体类</p>
+<img src="https://LittleElize.github.io/post-images/3/4.jpg" alt="" loading="lazy"><br>
+完成后就开始写实体类 User</p>
+<pre><code>@Data//lombok
+@JsonInclude(JsonInclude.Include.NON_NULL)//json值为null时不传递
+public class User {
+    private long id;//id
+    private String name;//姓名
+    private byte sex;//性别
+    private String birthday;//生日
+    private byte state;//状态
+    private long ascription;//从属
+}
+</code></pre>
+<p>实体类就照着数据库建就好了 id要用long 因为int型的取值范围是-2147483648~2147483647，在MySQL里的id字段通常设置成long类型而不是int型，是为了后续的使用兼容，随着业务增长，大数据的部署，还有第三方的接入使用，比如微信支付宝，它们返回的值。 用它就对了</p>
+<p>其中性别状态从属都用了byte 因为性别、状态可能会有很多种类型 像性别1表示男性，2表示女性，3表示未知，而byte是最小的数据类型 byte的取值范围是0-255 选它就完事了<br>
+接下来是 UserService</p>
+<pre><code>public interface UserService {
+        /**
+         * 增加
+         */
+        int insertU(User user);
+
+        /**
+         * 删除
+         */
+        int deleteU(long[] ids);
+
+        /**
+         * 更改
+         */
+        int updateU(User user);
+
+        /**
+         * 根据id查找
+         */
+        List&lt;User&gt; getUById(long[] ids);
+
+        /**
+         * 查找全部
+         */
+        List&lt;User&gt; getAll(User user);
+}
+</code></pre>
+<p>UserServiceImpl</p>
+<pre><code>@Service
+public class UserServiceImpl implements UserService {
+    @Autowired
+    private UserMapper userMapper;
+    @Override
+    public int insertU(User user) {
+        return userMapper.insertU(user);
+    }
+
+    @Override
+    public int deleteU(long[] ids) {
+        return userMapper.deleteU(ids);
+    }
+
+    @Override
+    public int updateU(User user) {
+        return userMapper.updateU(user);
+    }
+
+    @Override
+    public List&lt;User&gt; getUById(long[] ids) {
+        return userMapper.getUById(ids);
+    }
+
+    @Override
+    public List&lt;User&gt; getAll(User user) {
+        return userMapper.getAll(user);
+    }
+}
+</code></pre>
+<p>UserController</p>
+<pre><code>@RestController
+@RequestMapping(&quot;/user&quot;)
+public class UserController {
+    // http://localhost:8080/user/
+    @Autowired
+    private UserService userService;
+
+    /**
+     *
+     * @param user 插入数据
+     * @return 影响行数
+     */
+    @RequestMapping(value = &quot;/insertU&quot;)
+    public  int insertU(User user){
+        return userService.insertU(user);
+    }
+
+    /**
+     *
+     * @param ids 根据id删除
+     * @return  影响行数
+     */
+    @RequestMapping(value = &quot;/deleteU&quot;)
+    public int deleteU(long[] ids) {
+        return userService.deleteU(ids);
+    }
+
+    /**
+     *
+     * @param user 更新用户
+     * @return  影响行数
+     */
+    @RequestMapping(value = &quot;/updateU&quot;)
+    public int updateU(User user) {
+        return userService.updateU(user);
+    }
+
+    /**
+     *
+     * @param ids 根据id查找
+     * @return 查找内容
+     */
+    @RequestMapping(value = &quot;/getUById&quot;)
+    public List&lt;User&gt; getUById(long[] ids) {
+        return userService.getUById(ids);
+    }
+
+    /**
+     *
+     * @param user 查找所有用户
+     * @return 查找内容
+     */
+    @RequestMapping(value = &quot;/getAll&quot;)
+    public List&lt;User&gt; getAll(User user){
+        return userService.getAll(user);
+    }
+}
+</code></pre>
+<p>UserMapper.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.example.pms.mapper.user.UserMapper&quot;&gt;
+
+    &lt;insert id=&quot;insertU&quot; &gt;
+        insert into pms.u_user(u_name, u_sex, u_birthday, u_state, u_ascription)
+        VALUES (#{name},#{sex},#{birthday},#{state},#{ascription})
+    &lt;/insert&gt;
+
+    &lt;delete id=&quot;deleteU&quot; &gt;
+        update pms.u_user
+        set u_state=2
+        where u_id in
+        &lt;foreach collection=&quot;ids&quot; open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot; item=&quot;id&quot;&gt;
+            #{id}
+        &lt;/foreach&gt;
+    &lt;/delete&gt;
+
+    &lt;update id=&quot;updateU&quot; &gt;
+        update pms.u_user
+        set u_name=#{name}, u_sex=#{sex}, u_birthday=#{birthday},u_state=#{state}, u_ascription=#{ascription}
+        where u_id=#{id}
+    &lt;/update&gt;
+
+    &lt;select id=&quot;getUById&quot; resultType=&quot;com.example.pms.entity.user.User&quot;&gt;
+        select  u_id id,u_name name, u_sex sex, u_birthday birthday, u_state state, u_ascription ascription
+        from pms.u_user
+        where u_id in
+        &lt;foreach collection=&quot;ids&quot; open=&quot;(&quot; separator=&quot;,&quot; close=&quot;)&quot; item=&quot;id&quot;&gt;
+            #{id}
+        &lt;/foreach&gt;
+
+    &lt;/select&gt;
+
+    &lt;select id=&quot;getAll&quot; resultType=&quot;com.example.pms.entity.user.User&quot; &gt;
+        select u_id id, u_name name, u_sex sex, u_birthday birthday, u_state state, u_ascription ascription
+        from pms.u_user
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+<p>application.yml</p>
+<pre><code>server:
+  port: 8080
+spring:
+  datasource:
+    name: pms
+    url: jdbc:mysql://localhost:3306/pms?serverTimezone=Asia/Shanghai&amp;characterEncoding=utf8&amp;useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# 打印SQL语句
+logging:
+  level:
+    com.example.pms.mapper: debug
+</code></pre>
+<p>这样就完成了 pom.xml就不贴了 缺什么自己加上去就好了</p>
 
             </div>
             
